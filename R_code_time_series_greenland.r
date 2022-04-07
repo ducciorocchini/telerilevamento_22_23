@@ -49,3 +49,27 @@ plot(TGr, col=cl)
 # levelplot(TGr,col.regions=cl, main="LST variation in time",
 #           names.attr=c("July 2000","July 2005", "July 2010", "July 2015"))
 # 
+
+##########################
+#### Example 2: NO2 decrease during the lockdown period
+##########################
+
+setwd("~/lab/en") # Linux
+# setwd("C:/lab/en") # Windows
+# setwd("/Users/name/Desktop/lab/en") # Mac 
+
+en01 <- raster("EN_0001.png") 
+
+cl <- colorRampPalette(c('red','orange','yellow'))(100) # 
+plot(en01, col=cl)
+
+en13 <- raster("EN_0013.png")
+plot(en13, col=cl)
+
+# Let's import the whole set (altogether!)
+
+# Exercise: import the whole as in the Greenland example
+# by the following steps: list.files, lapply, stack 
+
+
+
