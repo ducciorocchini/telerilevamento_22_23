@@ -54,6 +54,8 @@ plot(TGr, col=cl)
 #### Example 2: NO2 decrease during the lockdown period
 ##########################
 
+library(raster)
+
 setwd("~/lab/en") # Linux
 # setwd("C:/lab/en") # Windows
 # setwd("/Users/name/Desktop/lab/en") # Mac 
@@ -95,5 +97,10 @@ plot(en113, col=cl)
 difen <-  en[[1]] - en[[13]]
 cldif <- colorRampPalette(c('blue','white','red'))(100) # 
 plot(difen, col=cldif)
+
+# plotRGB of three files together
+plotRGB(en, r=1, g=7, b=13, stretch="lin")
+plotRGB(en, r=1, g=7, b=13, stretch="hist")
+
 
 
