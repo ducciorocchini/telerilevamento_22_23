@@ -45,6 +45,43 @@ plot(l92c$map)
 # class 2: agricultural areas (+ water)
 
 # Exercise: classify the Landsat image from 2006
+l06c <- unsuperClass(l06, nClasses=2)
+l06c
+plot(l06c$map)
+# class 1: forest
+# class 2: agricultural areas (+ water)
+
+# Frequencies
+freq(l92c$map)
+# class 1: 305213 pixels (forest)
+# class 2:  36079 pixels (agricultural areas)
+
+freq(l06c$map)
+# class 1: 177941 pixels (forest)
+# class 2: 164785 pixels (agricultural areas)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
