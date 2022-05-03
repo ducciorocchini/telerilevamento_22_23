@@ -3,7 +3,8 @@
 library(raster)
 library(RStoolbox) # for image viewing and variability calculation
 library(ggplot2) # for ggplot plotting
-library(patchwork)
+library(patchwork) # multiframe with ggplot2 graphs
+# install.packages("viridis")
 library(viridis)
 
 setwd("~/lab/") # Linux
@@ -12,6 +13,10 @@ setwd("~/lab/") # Linux
 
 # Exercise: import the Similaun image
 sen <- brick("sentinel.png")
+
+# band1 = NIR
+# band2 = red
+# band3 = green
 
 # Exercise: plot the image by the ggRGB function
 ggRGB(sen, 1, 2, 3, stretch="lin") # stretch is done automatically
@@ -28,6 +33,12 @@ g2 <- ggRGB(sen, 2, 1, 3)
 # Thanks to patchwork!: 
 g1+g2
 
+# Exercise: plot one graph on top of the other
+g1/g2
+
+# Exercise (suggested by the students) - 4 plots: 
+(g1+g2)/(g1+g2)
+
 # calculation of variability over NIR
 nir <- sen[[1]]
 
@@ -38,7 +49,7 @@ plot(sd3, col=clsd)
 
 # plotting with ggplot
 ggplot() + 
-geom_raster(sd3, mapping =aes(x=x, y=y, fill=layer)) 
+geom_raster(sd3, mapping=aes(x=x, y=y, fill=layer))
 
 # with viridis
 ggplot() + 
@@ -56,6 +67,12 @@ ggtitle("Standard deviation by viridis package")
 ggplot() + 
 geom_raster(sd3, mapping =aes(x=x, y=y, fill=layer)) + 
 scale_fill_viridis(option = "magma") +
+ggtitle("Standard deviation by viridis package")
+
+# inferno
+ggplot() + 
+geom_raster(sd3, mapping =aes(x=x, y=y, fill=layer)) + 
+scale_fill_viridis(option = "inferno") +
 ggtitle("Standard deviation by viridis package")
 
 # Exercise: make the same calculation with a 7x7 window
